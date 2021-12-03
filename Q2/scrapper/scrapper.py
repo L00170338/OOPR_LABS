@@ -49,8 +49,8 @@ def main():
     if len(sys.argv) < 2:
 	    print ("You must pass the URL you want to scrape.")
     else:
-        url = sys.argv[1] 
-        request_data = get_webpage('10.10.10.170')
+        target = sys.argv[1] 
+        request_data = get_webpage(target)
         get_tittle(request_data)
         count_word(request_data)
         get_page_code(request_data)
