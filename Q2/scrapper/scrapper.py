@@ -47,7 +47,7 @@ def get_page_code(data):
 
 def main():
     if len(sys.argv) < 2:
-	    print ("You must pass the URL you want to scrape.")
+	    print ("You must pass the IP you want to scrape.")
     else:
         target = sys.argv[1] 
         request_data = get_webpage(target)

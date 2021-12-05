@@ -1,5 +1,6 @@
+
 ##################################################
-## Q3 - Assessment Webscrapper Apache Server.
+## Q5 - Assessment Webscrapper Apache Server.
 ##################################################
 ## Author: Wagner Ribeiro (L00170338).
 ## Email: L00170338@student.lyit.ie
@@ -13,7 +14,10 @@ import re
 import sys
 
 
-commands = ['hostname', 'ls -al / > longList.txt && ls -l longList.txt ', 'cat longList.txt']
+
+commands = ['sudo apt install -y curl', 'mkdir -p /home/l00170338/OOPR_LABS/Q5/Labs/Labs1', 'mkdir -p /home/l00170338/OOPR_LABS/Q5/Labs/Labs2', 'ls -l --time=atime']
+
+
 def ssh_connection(ip, port, username, password):
     try:
         print("Establishing a connection...")
@@ -25,14 +29,14 @@ def ssh_connection(ip, port, username, password):
             stdin, stdout, stderr  = connection.exec_command(cmd) #unix command to list directory contents and save to file
             time.sleep(1)
             vm_output = stdout.readlines()
-            vm_output = ''.join(vm_output)
-            
+            vm_output = ''.join(vm_output)  
             if  "Invalid input" in vm_output:  
                 print("There was at least one IOS syntax error on device {}".format(ip))
-                print (vm_output)
             else:
-                print ("Running the command '{}' on the remote IP {}".format(cmd, ip))
+                print ("Running the command {} on the remote IP {}".format(cmd, ip))
                 print (vm_output)
+
+
         session.close()
     except paramiko.AuthenticationException:
         print("Authentication Error")

@@ -9,7 +9,7 @@
 import sys
 import socket
 from datetime import datetime
-   
+from socket import getservbyname, getservbyport
 
 def scan_target():
 	# Defining a target to scan ports.
@@ -22,7 +22,8 @@ def scan_target():
 			socket.setdefaulttimeout(1)
 			result = s.connect_ex((target,port))
 			if result ==0:
-				print("Port {} is open".format(port))
+				port_name = (getservbyport(port))
+				print("Port {} : {} is open".format(port_name, port))
 			s.close()
 	except socket.error:
 			print("\ Server not responding to the quests, check if host is alive.!!!!")
